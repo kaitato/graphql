@@ -105,4 +105,30 @@ fetch(
     .then((response) => response.json())
     .then((response) => {
         console.log(response);
+        //Profile page
+        const profilePage = document.querySelectorAll('.profile-page div');
+        profilePage[0].innerHTML = 'Name: ' + response.data.userdata[0].login;
+        profilePage[1].innerHTML = 'Id: ' + response.data.userdata[0].id;
+        profilePage[2].innerHTML =
+            'Current Level: ' + response.data.level[0].amount;
+        let totalExp = 0;
+        for (let i = 0; i < response.data.exp.length; i++) {
+            totalExp += response.data.exp[i].amount;
+        }
+        totalExp = totalExp / 1000;
+        profilePage[3].innerHTML = 'Total Exp: ' + totalExp + 'kB';
+        profilePage[4].innerHTML =
+            'Highest xp gain: ' + response.data.exp[0].amount / 1000 + 'kB';
+        profilePage[5].innerHTML =
+            'Lowest xp gain: ' +
+            response.data.exp[response.data.exp.length - 1].amount / 1000 +
+            'kB';
+        let averageGrade = 0;
+        for (let i = 0; i < response.data.progress.length; i++) {
+            averageGrade += response.data.progress[i].grade;
+        }
+        averageGrade =
+            Math.round((averageGrade / response.data.progress.length) * 100) /
+            100;
+        profilePage[6].innerHTML = 'Average Grade: ' + averageGrade;
     });
