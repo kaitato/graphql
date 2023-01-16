@@ -371,3 +371,9 @@ fetch(
             skillBars[i].children[1].innerHTML = skillShort;
         }
     });
+    const convertDateFormat = (date) => {
+        let splitDate = date.split('T')[0].split('-');
+        date = splitDate[2] + '/' + splitDate[1] + '/' + splitDate[0];
+        return date;
+    };
+    
