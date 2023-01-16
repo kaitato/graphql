@@ -1,0 +1,123 @@
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+ol,
+ul,
+li,
+form,
+label,
+footer,
+header,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: 'Courier New', Courier, monospace;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+}
+.hide {
+    display: none;
+}
+.block {
+    display: block;
+}
+
+.header {
+    height: 3vh;
+    background-color: #0065a9;
+    color: white;
+    padding: 2vh 2vw;
+    font-size: 3vh;
+}
+.body {
+    display: flex;
+    height: 83vh;
+    background-color: #ebeff2;
+    padding: 5vh 5vw;
+}
+.nav {
+    height: 83vh;
+    width: 25vw;
+}
+.img-box {
+    height: 20vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2vh;
+}
+.img-box img {
+    height: 80%;
+    width: 80%;
+}
+.img-box img:hover {
+    filter: brightness(0) saturate(100%);
+}
+.selected-page {
+    background-color: white;
+}
+.selected-page img {
+    filter: brightness(0) saturate(100%);
+}
+.main {
+    height: 80vh;
+    width: 95vw;
+    background-color: white;
+    border-radius: 2vh;
+}
+.pages {
+    height: 70vh;
+    width: 60vw;
+    padding: 5vh 5vw;
+    font-size: 3vh;
+    overflow-y: scroll;
+}
+.pages div {
+    padding-bottom: 4vh;
+}
+.title {
+    font-size: 5vh;
+    text-decoration: underline;
+    padding-bottom: 4vh;
+    font-weight: bold;
+}
+.bar {
+    fill: #aaa;
+    height: 21px;
+    transition: fill .3s ease;
+    cursor: pointer;
+    font-family: Helvetica, sans-serif;
+}
+.bar:hover {
+    fill: #ff4a25;
+}
+.bar text {
+    font-size: 0.1vh;
+    fill: #555
+}
+.skills-page svg {
+    width: 53vw;
+    height: 53vh;
+}
+.skills-page div {
+    font-size: 2vh;
+}
