@@ -1,3 +1,45 @@
+const changePage = (whichPage) => {
+    let pages = document.querySelectorAll('.pages');
+    pages.forEach((page) => {
+        page.classList.add('hide');
+        page.classList.remove('block');
+    });
+    let imgBox = document.querySelectorAll('.img-box');
+    imgBox.forEach((box) => {
+        box.classList.remove('selected-page');
+    });
+    if (whichPage === 'profile-page') {
+        pageToChangeTo = document.querySelector('.profile-page');
+        selectedPage = document.querySelector('.profile');
+    }
+    if (whichPage === 'projects-page') {
+        pageToChangeTo = document.querySelector('.projects-page');
+        selectedPage = document.querySelector('.projects');
+    }
+    if (whichPage === 'graphs-page') {
+        pageToChangeTo = document.querySelector('.graphs-page');
+        selectedPage = document.querySelector('.graphs');
+    }
+    if (whichPage === 'skills-page') {
+        pageToChangeTo = document.querySelector('.skills-page');
+        selectedPage = document.querySelector('.skills');
+    }
+    pageToChangeTo.classList.remove('hide');
+    pageToChangeTo.classList.add('block');
+    selectedPage.classList.add('selected-page');
+};
+const profileButton = document.querySelector('.profile');
+profileButton.addEventListener('click', changePage.bind(null, 'profile-page'));
+const projectsButton = document.querySelector('.projects');
+projectsButton.addEventListener(
+    'click',
+    changePage.bind(null, 'projects-page')
+);
+const graphsButton = document.querySelector('.graphs');
+graphsButton.addEventListener('click', changePage.bind(null, 'graphs-page'));
+const skillsButton = document.querySelector('.skills');
+skillsButton.addEventListener('click', changePage.bind(null, 'skills-page'));
+
 const graphQLQuery = `{
     userdata: user(where: {id: {_eq: "241"}}) {
         login
