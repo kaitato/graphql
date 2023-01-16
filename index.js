@@ -131,4 +131,27 @@ fetch(
             Math.round((averageGrade / response.data.progress.length) * 100) /
             100;
         profilePage[6].innerHTML = 'Average Grade: ' + averageGrade;
+
+        //Project page
+        const projectsPage = document.querySelector('.projects-page');
+        for (let i = 0; i < response.data.progress.length; i++) {
+            let grade = Math.round(response.data.progress[i].grade * 100) / 100;
+            let createdDate = convertDateFormat(
+                response.data.progress[i].createdAt
+            );
+            let updatedDate = convertDateFormat(
+                response.data.progress[i].updatedAt
+            );
+            let projectHTML = `
+            <div>${response.data.progress[i].object.name}</div>
+            <div>Grade: ${grade}</div>
+            <div>Created at: ${createdDate}</div>
+            <div>Last updated: ${updatedDate}</div>
+            `;
+
+            const project = document.createElement('div');
+            project.classList.add('project');
+            project.innerHTML = projectHTML;
+            projectsPage.insertAdjacentElement('beforeend', project);
+        }
     });
