@@ -56,3 +56,11 @@ let graphQLObject = {
         query: graphQLQuery
     })
 };
+fetch(
+    'https://learn.01founders.co/api/graphql-engine/v1/graphql',
+    graphQLObject
+)
+    .then((response) => response.json())
+    .then((response) => {
+        console.log(response);
+    });
