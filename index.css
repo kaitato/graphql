@@ -117,7 +117,7 @@ body {
     width: 53vw;
     height: 53vh;
 }
-.skills-page div {
+.skills-page div, .graphs-page div {
     font-size: 2vh;
 }
 .exp-graph .grid {
