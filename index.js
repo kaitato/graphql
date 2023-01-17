@@ -104,7 +104,6 @@ fetch(
 )
     .then((response) => response.json())
     .then((response) => {
-        console.log(response);
         //Profile page
         const profilePage = document.querySelectorAll('.profile-page div');
         profilePage[0].innerHTML = 'Name: ' + response.data.userdata[0].login;
@@ -154,6 +153,24 @@ fetch(
             project.innerHTML = projectHTML;
             projectsPage.insertAdjacentElement('beforeend', project);
         }
+
+        //Graphs page
+        const graphsPage = document.querySelector('.graphs-page');
+        const expGraphSvg = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'svg'
+        );
+        const expGraphTitle = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'title'
+        );
+        expGraphTitle.classList.add('title');
+        expGraphTitle.innerHTML = 'Skill Levels';
+        expGraphSvg.setAttribute('viewBox', '0 0 24 24');
+        expGraphSvg.classList.add('exp-graph');
+        expGraphSvg.role = 'img';
+        graphsPage.appendChild(expGraphSvg);
+        expGraphSvg.insertAdjacentElement('afterbegin', expGraphTitle);
 
         //Skills page
         const skillsPage = document.querySelector('.skills-page');
@@ -214,23 +231,28 @@ fetch(
         }
 
         const skillBars = [...document.querySelectorAll('.skill-chart g')];
-        console.log(skillChartObj)
-        console.log(Object.keys(skillChartObj))
         Object.keys(skillChartObj).forEach((skill, i) => {
-            const chosenBar = skillBars.find((bar) => bar.classList[0] === skill)
-            chosenBar.children[0].setAttribute('width', skillChartObj[skill] / 150 + "vw")
-            chosenBar.children[1].setAttribute('x', skillChartObj[skill] / 150 + 0.02 + "vw")
-            chosenBar.children[2].innerHTML = skillChartObj[skill]
-            
+            const chosenBar = skillBars.find(
+                (bar) => bar.classList[0] === skill
+            );
+            chosenBar.children[0].setAttribute(
+                'width',
+                skillChartObj[skill] / 150 + 'vw'
+            );
+            chosenBar.children[1].setAttribute(
+                'x',
+                skillChartObj[skill] / 150 + 0.02 + 'vw'
+            );
+            chosenBar.children[2].innerHTML = skillChartObj[skill];
+
             chosenBar.children[0].setAttribute('y', i * 0.2 + 'vh');
             chosenBar.children[1].setAttribute('y', i * 0.2 + 0.1 + 'vh');
             let skillShort = skillBars[i].classList[0].split('_')[1];
             chosenBar.children[1].innerHTML = skillShort;
-        })
+        });
     });
-    const convertDateFormat = (date) => {
-        let splitDate = date.split('T')[0].split('-');
-        date = splitDate[2] + '/' + splitDate[1] + '/' + splitDate[0];
-        return date;
-    };
-    
+const convertDateFormat = (date) => {
+    let splitDate = date.split('T')[0].split('-');
+    date = splitDate[2] + '/' + splitDate[1] + '/' + splitDate[0];
+    return date;
+};
