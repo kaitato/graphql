@@ -102,7 +102,6 @@ body {
 }
 .bar {
     fill: #aaa;
-    height: 21px;
     transition: fill .3s ease;
     cursor: pointer;
     font-family: Helvetica, sans-serif;
@@ -114,10 +113,25 @@ body {
     font-size: 0.1vh;
     fill: #555
 }
-.skills-page svg {
+.pages svg {
     width: 53vw;
     height: 53vh;
 }
 .skills-page div {
     font-size: 2vh;
+}
+.exp-graph .grid {
+    stroke: #ccc;
+    stroke-dasharray: 0;
+}
+.x-grid { 
+    stroke-width: 0.1px;
+}
+.y-grid {
+    stroke-width: 0.1px;
+
+}
+.grid {
+    height: 100%;
+    width: 100%;
 }

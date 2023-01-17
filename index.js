@@ -165,12 +165,33 @@ fetch(
             'title'
         );
         expGraphTitle.classList.add('title');
-        expGraphTitle.innerHTML = 'Skill Levels';
+        expGraphTitle.innerHTML = 'Experience Levels';
         expGraphSvg.setAttribute('viewBox', '0 0 24 24');
         expGraphSvg.classList.add('exp-graph');
         expGraphSvg.role = 'img';
         graphsPage.appendChild(expGraphSvg);
         expGraphSvg.insertAdjacentElement('afterbegin', expGraphTitle);
+        
+        //Create axes
+        const CreateXAxis = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        const CreateYAxis = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        const CreateXLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        const CreateYLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        CreateXAxis.classList.add('grid', 'x-grid')
+        CreateYAxis.classList.add('grid', 'y-grid')
+        CreateXLine.setAttribute('x1', 0)
+        CreateXLine.setAttribute('x2', "100%")
+        CreateXLine.setAttribute('y1', "100%")
+        CreateXLine.setAttribute('y2', "100%")
+        CreateYLine.setAttribute('x1', 0)
+        CreateYLine.setAttribute('x2', 0)
+        CreateYLine.setAttribute('y1', "100%")
+        CreateYLine.setAttribute('y2', 0)
+        CreateXAxis.insertAdjacentElement('beforeend', CreateXLine)
+        CreateYAxis.insertAdjacentElement('beforeend', CreateYLine)
+        expGraphSvg.insertAdjacentElement('beforeend', CreateXAxis)
+        expGraphSvg.insertAdjacentElement('beforeend', CreateYAxis)
+
 
         //Skills page
         const skillsPage = document.querySelector('.skills-page');
