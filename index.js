@@ -245,11 +245,18 @@ fetch(
             if (response.data.skills[i].type === 'skill_sys-admin')
                 sysadmin += response.data.skills[i].amount;
         }
-        console.log(skillChartObj);
 
         const skillBars = document.querySelectorAll('.skill-chart g');
+        // console.log(skillChartObj)
+        // for (const key in skillChartObj) {
+        //     console.log(`${key}: ${skillChartObj[key]}`)
+        // }
+        // if (skillBars[i].classList[0] === type) {
+        //     skillBars[i].children[0].setAttribute('width', skillChartObj[type] / 150 + "vw")
+        //     skillBars[i].children[1].setAttribute('x', skillChartObj[type] / 150 + 0.02 + "vw")
+        //     skillBars[i].children[2].innerHTML = skillChartObj[type]
+        // }
         for (let i = 0; i < skillBars.length; i++) {
-            console.log(skillBars[i].children);
             if (skillBars[i].classList[0] === 'skill_go') {
                 skillBars[i].children[0].setAttribute('width', go / 150 + 'vw');
                 skillBars[i].children[1].setAttribute(
