@@ -27,7 +27,7 @@ section {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Jost'
 }
 body {
     height: 100vh;
@@ -106,7 +106,7 @@ body {
     fill: #aaa;
     transition: fill .3s ease;
     cursor: pointer;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Jost'
 }
 .bar:hover {
     fill: #ff4a25;
