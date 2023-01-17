@@ -184,24 +184,30 @@ fetch(
         expGraphSvg.insertAdjacentElement('afterbegin', expGraphTitle);
         
         //Create axes
-        const CreateXAxis = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        const CreateYAxis = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        const CreateXLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        const CreateYLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        CreateXAxis.classList.add('grid', 'x-grid')
-        CreateYAxis.classList.add('grid', 'y-grid')
-        CreateXLine.setAttribute('x1', 0)
-        CreateXLine.setAttribute('x2', "100%")
-        CreateXLine.setAttribute('y1', "100%")
-        CreateXLine.setAttribute('y2', "100%")
-        CreateYLine.setAttribute('x1', 0)
-        CreateYLine.setAttribute('x2', 0)
-        CreateYLine.setAttribute('y1', "100%")
-        CreateYLine.setAttribute('y2', 0)
-        CreateXAxis.insertAdjacentElement('beforeend', CreateXLine)
-        CreateYAxis.insertAdjacentElement('beforeend', CreateYLine)
-        expGraphSvg.insertAdjacentElement('beforeend', CreateXAxis)
-        expGraphSvg.insertAdjacentElement('beforeend', CreateYAxis)
+        const createXAxis = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        createXAxis.classList.add('grid', 'x-grid')
+        const createYAxis = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        createYAxis.classList.add('grid', 'y-grid')
+        const createXLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        createXLine.setAttribute('x1', 0)
+        createXLine.setAttribute('x2', "100%")
+        createXLine.setAttribute('y1', "100%")
+        createXLine.setAttribute('y2', "100%")
+        const createYLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        createYLine.setAttribute('x1', 0)
+        createYLine.setAttribute('x2', 0)
+        createYLine.setAttribute('y1', "100%")
+        createYLine.setAttribute('y2', 0)
+        const createText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        createText.innerHTML = "Total experience"
+        createText.setAttribute('x', 0)
+        createText.setAttribute('y', 0)
+        createText.style.rotate = "90deg"
+        createXAxis.insertAdjacentElement('beforeend', createXLine)
+        createYAxis.insertAdjacentElement('beforeend', createYLine)
+        expGraphSvg.insertAdjacentElement('beforeend', createXAxis)
+        expGraphSvg.insertAdjacentElement('beforeend', createYAxis)
+        expGraphSvg.insertAdjacentElement('beforeend', createText)
 
         //Create the line
         const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
