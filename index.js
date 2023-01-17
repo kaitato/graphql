@@ -2,7 +2,7 @@ const changePage = (whichPage) => {
     let pages = document.querySelectorAll('.pages');
     pages.forEach((page) => {
         page.classList.add('hide');
-        page.classList.remove('block');
+        page.classList.remove('flex');
     });
     let imgBox = document.querySelectorAll('.img-box');
     imgBox.forEach((box) => {
@@ -25,7 +25,7 @@ const changePage = (whichPage) => {
         selectedPage = document.querySelector('.skills');
     }
     pageToChangeTo.classList.remove('hide');
-    pageToChangeTo.classList.add('block');
+    pageToChangeTo.classList.add('flex');
     selectedPage.classList.add('selected-page');
 };
 const profileButton = document.querySelector('.profile');

@@ -36,10 +36,9 @@ body {
 .hide {
     display: none;
 }
-.block {
-    display: block;
+.flex {
+    display: flex;
 }
-
 .header {
     height: 3vh;
     background-color: #0065a9;
@@ -90,6 +89,7 @@ body {
     padding: 5vh 5vw;
     font-size: 3vh;
     overflow-y: scroll;
+    flex-direction: column;
 }
 .pages div {
     padding-bottom: 4vh;
@@ -113,12 +113,19 @@ body {
     font-size: 0.1vh;
     fill: #555
 }
-.pages svg {
-    width: 53vw;
+.skills-page svg {
+    width: 39vw;
     height: 53vh;
+}
+.graphs-page svg {
+    width: 40vw;
+    height: 49vh;
 }
 .skills-page div, .graphs-page div {
     font-size: 2vh;
+}
+.graphs-page .dropdown div {
+    padding-bottom: 0;
 }
 .exp-graph .grid {
     stroke: #ccc;
@@ -135,3 +142,32 @@ body {
     height: 100%;
     width: 100%;
 }
+.dropbtn {
+    background-color: #0e99f6;
+    color: white;
+    padding: 2vh 2vw;
+    font-size: 2vh;
+    border: none;
+    border-radius: 1vh;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 25vw;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 22vw;
+    box-shadow: 0vw 1vh 2vh 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 2vh 2vw;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
