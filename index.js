@@ -211,7 +211,7 @@ fetch(
             ycoord += (project.amount/26348)
             let round = Math.round(ycoord*100)/100
             console.log(round)
-            lineCoordinates += (i+1) + "," + (24-round) + " "
+            lineCoordinates += ((i+1)*0.75) + "," + (24-round) + " "
         });
         polyline.setAttribute('points', lineCoordinates)
         expGraphSvg.insertAdjacentElement('beforeend' , polyline)
