@@ -162,31 +162,20 @@ fetch(
             'svg'
         );
         // const skillChartPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        const title = document.createElementNS(
+        const skillChartTitle = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'title'
         );
-        title.classList.add('title');
-        title.innerHTML = 'Skill Levels';
+        skillChartTitle.classList.add('title');
+        skillChartTitle.innerHTML = 'Experience Levels over time';
         skillChartSvg.setAttribute('viewBox', '0 0 24 24');
         skillChartSvg.classList.add('skill-chart');
 
         skillChartSvg.role = 'img';
         // skillChartSvg.appendChild(skillChartPath);
         let skillChartObj = {};
-        let go = 0;
-        let backend = 0;
-        let frontend = 0;
-        let js = 0;
-        let algo = 0;
-        let html = 0;
-        let sql = 0;
-        let game = 0;
-        let docker = 0;
-        let prog = 0;
-        let sysadmin = 0;
         skillsPage.appendChild(skillChartSvg);
-        skillChartSvg.insertAdjacentElement('afterbegin', title);
+        skillChartSvg.insertAdjacentElement('afterbegin', skillChartTitle);
 
         const skillChart = document.querySelector('.skill-chart');
         for (let i = 0; i < response.data.skills.length; i++) {
@@ -222,161 +211,22 @@ fetch(
             }
             if (type in skillChartObj)
                 skillChartObj[type] += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_go')
-                go += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_back-end')
-                backend += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_front-end')
-                frontend += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_js')
-                js += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_algo')
-                algo += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_html')
-                html += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_sql')
-                sql += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_game')
-                game += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_docker')
-                docker += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_prog')
-                prog += response.data.skills[i].amount;
-            if (response.data.skills[i].type === 'skill_sys-admin')
-                sysadmin += response.data.skills[i].amount;
         }
 
-        const skillBars = document.querySelectorAll('.skill-chart g');
-        // console.log(skillChartObj)
-        // for (const key in skillChartObj) {
-        //     console.log(`${key}: ${skillChartObj[key]}`)
-        // }
-        // if (skillBars[i].classList[0] === type) {
-        //     skillBars[i].children[0].setAttribute('width', skillChartObj[type] / 150 + "vw")
-        //     skillBars[i].children[1].setAttribute('x', skillChartObj[type] / 150 + 0.02 + "vw")
-        //     skillBars[i].children[2].innerHTML = skillChartObj[type]
-        // }
-        for (let i = 0; i < skillBars.length; i++) {
-            if (skillBars[i].classList[0] === 'skill_go') {
-                skillBars[i].children[0].setAttribute('width', go / 150 + 'vw');
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    go / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = go;
-            }
-            if (skillBars[i].classList[0] === 'skill_back-end') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    backend / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    backend / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = backend;
-            }
-            if (skillBars[i].classList[0] === 'skill_front-end') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    frontend / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    frontend / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = frontend;
-            }
-            if (skillBars[i].classList[0] === 'skill_js') {
-                skillBars[i].children[0].setAttribute('width', js / 150 + 'vw');
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    js / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = js;
-            }
-            if (skillBars[i].classList[0] === 'skill_algo') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    algo / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    algo / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = algo;
-            }
-            if (skillBars[i].classList[0] === 'skill_html') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    html / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    html / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = html;
-            }
-            if (skillBars[i].classList[0] === 'skill_sql') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    sql / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    sql / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = sql;
-            }
-            if (skillBars[i].classList[0] === 'skill_game') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    game / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    game / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = game;
-            }
-            if (skillBars[i].classList[0] === 'skill_docker') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    docker / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    docker / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = docker;
-            }
-            if (skillBars[i].classList[0] === 'skill_prog') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    prog / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    prog / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = prog;
-            }
-            if (skillBars[i].classList[0] === 'skill_sys-admin') {
-                skillBars[i].children[0].setAttribute(
-                    'width',
-                    sysadmin / 150 + 'vw'
-                );
-                skillBars[i].children[1].setAttribute(
-                    'x',
-                    sysadmin / 150 + 0.02 + 'vw'
-                );
-                skillBars[i].children[2].innerHTML = sysadmin;
-            }
-            skillBars[i].children[0].setAttribute('y', i * 0.2 + 'vh');
-            skillBars[i].children[1].setAttribute('y', i * 0.2 + 0.1 + 'vh');
-            skillShort = skillBars[i].classList[0].split('_')[1];
-            skillBars[i].children[1].innerHTML = skillShort;
-        }
+        const skillBars = [...document.querySelectorAll('.skill-chart g')];
+        console.log(skillChartObj)
+        console.log(Object.keys(skillChartObj))
+        Object.keys(skillChartObj).forEach((skill, i) => {
+            const chosenBar = skillBars.find((bar) => bar.classList[0] === skill)
+            chosenBar.children[0].setAttribute('width', skillChartObj[skill] / 150 + "vw")
+            chosenBar.children[1].setAttribute('x', skillChartObj[skill] / 150 + 0.02 + "vw")
+            chosenBar.children[2].innerHTML = skillChartObj[skill]
+            
+            chosenBar.children[0].setAttribute('y', i * 0.2 + 'vh');
+            chosenBar.children[1].setAttribute('y', i * 0.2 + 0.1 + 'vh');
+            let skillShort = skillBars[i].classList[0].split('_')[1];
+            chosenBar.children[1].innerHTML = skillShort;
+        })
     });
     const convertDateFormat = (date) => {
         let splitDate = date.split('T')[0].split('-');
