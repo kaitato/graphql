@@ -88,11 +88,13 @@ body {
     width: 60vw;
     padding: 5vh 5vw;
     font-size: 3vh;
-    overflow-y: scroll;
     flex-direction: column;
 }
 .pages div {
     padding-bottom: 4vh;
+}
+.projects-page {
+    overflow-y: scroll;
 }
 .title {
     font-size: 5vh;
@@ -134,6 +136,9 @@ body {
 .exp-graph polyline {
     fill: none;
     stroke: #0074d9;
+}
+.exp-graph text {
+    font-size: 0.2vh;
 }
 .x-grid, .y-grid, .exp-graph polyline { 
     stroke-width: 0.1px;
