@@ -198,30 +198,43 @@ fetch(
         createYLine.setAttribute('x2', 0)
         createYLine.setAttribute('y1', "100%")
         createYLine.setAttribute('y2', 0)
+        createXAxis.insertAdjacentElement('beforeend', createXLine)
+        createYAxis.insertAdjacentElement('beforeend', createYLine)
+        expGraphSvg.insertAdjacentElement('beforeend', createXAxis)
+        expGraphSvg.insertAdjacentElement('beforeend', createYAxis)
+
+        //Create labels
+        const createLabels = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         const createText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         createText.innerHTML = "Total experience"
         createText.setAttribute('x', 0)
         createText.setAttribute('y', 0)
         createText.style.rotate = "90deg"
-        createXAxis.insertAdjacentElement('beforeend', createXLine)
-        createYAxis.insertAdjacentElement('beforeend', createYLine)
-        expGraphSvg.insertAdjacentElement('beforeend', createXAxis)
-        expGraphSvg.insertAdjacentElement('beforeend', createYAxis)
-        expGraphSvg.insertAdjacentElement('beforeend', createText)
+        createLabels.insertAdjacentElement('beforeend', createText)
+        for (let i = 0; i < 6; i++) {
+            const createAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            createAxisLabel.innerHTML = (5 - i) * 130 + "kB"
+            createAxisLabel.setAttribute('x', -0.5 + "vw")
+            createAxisLabel.setAttribute('y', (i * 19) + 5 + "%")
+            createLabels.insertAdjacentElement('beforeend', createAxisLabel)
+        }
+        expGraphSvg.insertAdjacentElement('beforeend', createLabels)
 
         //Create the line
         const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
         let lineCoordinates = "0,24 "
         let ycoord = 0
+        let aaa = 0
         response.data.projectexpovertime.forEach((project, i) => {
             ycoord += (project.amount/26348)
+            aaa += project.amount
             let round = Math.round(ycoord*100)/100
             console.log(round)
             lineCoordinates += ((i+1)*0.75) + "," + (24-round) + " "
         });
         polyline.setAttribute('points', lineCoordinates)
         expGraphSvg.insertAdjacentElement('beforeend' , polyline)
-        console.log(lineCoordinates)
+        console.log(aaa)
 
         //Skills page
         const skillsPage = document.querySelector('.skills-page');

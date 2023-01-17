@@ -120,8 +120,8 @@ body {
     height: 53vh;
 }
 .graphs-page svg {
-    width: 40vw;
-    height: 49vh;
+    width: 50vw;
+    height: 50vh;
 }
 .skills-page div, .graphs-page div {
     font-size: 2vh;
