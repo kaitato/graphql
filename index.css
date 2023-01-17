@@ -124,12 +124,12 @@ body {
     stroke: #ccc;
     stroke-dasharray: 0;
 }
-.x-grid { 
-    stroke-width: 0.1px;
+.exp-graph polyline {
+    fill: none;
+    stroke: #0074d9;
 }
-.y-grid {
+.x-grid, .y-grid, .exp-graph polyline { 
     stroke-width: 0.1px;
-
 }
 .grid {
     height: 100%;

@@ -48,12 +48,12 @@ const graphQLQuery = `{
     level: transaction(
         where: {_and: [{user: {id: {_eq: "241"}}}, {type: {_eq: "level"}}]}
         order_by: {amount: desc}
-      ) {
+    ) {
       amount
     }
     exp: transaction(
-    where: {_and: [{user: {id: {_eq: "241"}}}, {type: {_eq: "xp"}}]}
-    order_by: {amount: desc}
+        where: {_and: [{user: {id: {_eq: "241"}}}, {type: {_eq: "xp"}}]}
+        order_by: {amount: desc}
     ) {
         amount
     }
@@ -77,6 +77,16 @@ const graphQLQuery = `{
         type
         amount
       }
+    projectexpovertime: transaction(
+        where: {_and: [{user: {id: {_eq: "241"}}}, {type: {_eq: "xp"}}, {object: {type: {_eq: "project"}}}]}
+        order_by: {createdAt: asc}
+    ) {
+        amount
+        createdAt
+        object {
+            name
+        }
+    }
     projecttransactions: transaction(
         where: {_and: [{user: {id: {_eq: "241"}}}, {object: {type: {_eq: "project"}}}, {type: {_eq: "xp"}}]}
         order_by: {createdAt: desc}
@@ -155,6 +165,7 @@ fetch(
         }
 
         //Graphs page
+        console.log(response)
         const graphsPage = document.querySelector('.graphs-page');
         const expGraphSvg = document.createElementNS(
             'http://www.w3.org/2000/svg',
@@ -192,6 +203,19 @@ fetch(
         expGraphSvg.insertAdjacentElement('beforeend', CreateXAxis)
         expGraphSvg.insertAdjacentElement('beforeend', CreateYAxis)
 
+        //Create the line
+        const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        let lineCoordinates = "0,24 "
+        let ycoord = 0
+        response.data.projectexpovertime.forEach((project, i) => {
+            ycoord += (project.amount/26348)
+            let round = Math.round(ycoord*100)/100
+            console.log(round)
+            lineCoordinates += (i+1) + "," + (24-round) + " "
+        });
+        polyline.setAttribute('points', lineCoordinates)
+        expGraphSvg.insertAdjacentElement('beforeend' , polyline)
+        console.log(lineCoordinates)
 
         //Skills page
         const skillsPage = document.querySelector('.skills-page');
