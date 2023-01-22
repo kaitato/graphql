@@ -165,7 +165,6 @@ fetch(
         }
 
         //Graphs page
-        console.log(response)
         const graphsPage = document.querySelector('.graphs-page');
         const expGraphSvg = document.createElementNS(
             'http://www.w3.org/2000/svg',
@@ -229,7 +228,6 @@ fetch(
             ycoord += (project.amount/26348)
             aaa += project.amount
             let round = Math.round(ycoord*100)/100
-            console.log(round)
             lineCoordinates += ((i+1)*0.75) + "," + (24-round) + " "
         });
         polyline.setAttribute('points', lineCoordinates)
